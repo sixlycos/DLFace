@@ -114,9 +114,14 @@ python run.py
 
 - **问题**: 安装dlib失败
   **解决方案**: 
-    * Windows: 安装Visual Studio和CMake，然后重试安装
-    * Linux: 安装build-essential和cmake，然后重试安装
-    * 或下载预编译的wheel: https://github.com/datamagic2020/dlib_wheels
+    * **Windows**: 
+      1. 从[cmake.org](https://cmake.org/download/)下载并安装CMake，安装时选择"Add CMake to the system PATH"
+      2. 安装Visual Studio 2019或更高版本，或仅安装[Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+      3. 安装完成后运行`pip install dlib`
+      4. 或直接安装预编译版本: `pip install https://github.com/jloh02/dlib/releases/download/v19.24/dlib-19.24.0-cp311-cp311-win_amd64.whl` (注意选择与您Python版本匹配的wheel文件)
+    * **Linux**: 安装build-essential和cmake: `sudo apt-get update && sudo apt-get install build-essential cmake`，然后运行`pip install dlib`
+    * **macOS**: 安装XCode命令行工具和cmake: `xcode-select --install && brew install cmake`，然后运行`pip install dlib`
+    * 或查看更多版本: [jloh02/dlib](https://github.com/jloh02/dlib/releases) 或 [datamagic2020/dlib_wheels](https://github.com/datamagic2020/dlib_wheels)
 
 ## Python版本兼容性
 

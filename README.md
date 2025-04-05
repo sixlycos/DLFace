@@ -42,7 +42,20 @@ python install_dependencies.py --gpu
 python install_dependencies.py --cpu-only
 ```
 
-如果您遇到安装问题，请参考 [COMPATIBILITY.md](COMPATIBILITY.md) 中的兼容性指南和解决方案。
+> **重要提示**: dlib库安装需要CMake编译器。如果安装过程中出现`CMake is not installed on your system!`错误，请按照以下步骤解决：
+> 
+> **Windows用户**:
+> - 从[cmake.org](https://cmake.org/download/)下载并安装CMake，安装时选择"Add CMake to the system PATH"
+> - 安装Visual Studio 2019 或以上版本，或仅安装[Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+> - 安装完成后重新运行`python install_dependencies.py`
+>
+> **或者使用预编译版本**：
+> ```bash
+> pip install https://github.com/jloh02/dlib/releases/download/v19.24/dlib-19.24.0-cp311-cp311-win_amd64.whl
+> ```
+> (根据您的Python版本选择相应的wheel文件)
+
+如果您遇到其他安装问题，请参考 [COMPATIBILITY.md](COMPATIBILITY.md) 中的兼容性指南和解决方案。
 
 3. 下载预训练模型：
 ```bash

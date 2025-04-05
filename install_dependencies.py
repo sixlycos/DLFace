@@ -109,11 +109,20 @@ def install_from_requirements(requirements_file="requirements.txt", use_gpu=Fals
     logger.info(f"检测到Python版本: {py_version}")
     
     # 读取requirements.txt
-    with open(requirements_file, "r") as f:
+    with open(requirements_file, "r", encoding="utf-8") as f:
         requirements = f.readlines()
     
-    # 过滤掉注释和空行
-    requirements = [line.strip() for line in requirements if line.strip() and not line.strip().startswith("#")]
+    # 过滤掉注释和空行，并正确处理行内注释
+    cleaned_requirements = []
+    for line in requirements:
+        line = line.strip()
+        if line and not line.startswith("#"):
+            # 处理行内注释：截取注释符号前的部分
+            if "#" in line:
+                line = line.split("#")[0].strip()
+            cleaned_requirements.append(line)
+    
+    requirements = cleaned_requirements
     
     # 特殊处理TensorFlow
     if use_gpu:

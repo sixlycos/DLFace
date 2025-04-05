@@ -60,14 +60,39 @@ DLface支持GPU加速，但有以下要求：
 
 ### 1. dlib安装失败
 
+**症状**: 安装时出现`CMake is not installed on your system!`错误，或编译失败。
+
 **Windows解决方案**:
-- 安装Visual Studio Build Tools和CMake
-- 或使用预编译wheel: `pip install https://github.com/datamagic2020/dlib_wheels/raw/master/dlib-19.22.1-cp39-cp39-win_amd64.whl`
+1. 安装CMake:
+   - 从[cmake.org](https://cmake.org/download/)下载并安装
+   - 安装时选择"Add CMake to the system PATH for all users"
+2. 安装编译工具:
+   - 安装Visual Studio 2019或更高版本，或仅安装[Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+3. 重新安装dlib:
+   ```bash
+   pip install dlib
+   ```
+4. 或者使用预编译wheel (推荐简单方案):
+   ```bash
+   # 针对Python 3.11
+   pip install https://github.com/jloh02/dlib/releases/download/v19.24/dlib-19.24.0-cp311-cp311-win_amd64.whl
+   
+   # 针对Python 3.9/3.10
+   pip install https://github.com/jloh02/dlib/releases/download/v19.24/dlib-19.24.0-cp310-cp310-win_amd64.whl
+   ```
+   更多版本: [jloh02/dlib](https://github.com/jloh02/dlib/releases) 或 [datamagic2020/dlib_wheels](https://github.com/datamagic2020/dlib_wheels)
 
 **Linux解决方案**:
 ```bash
 sudo apt-get update
 sudo apt-get install build-essential cmake
+pip install dlib
+```
+
+**macOS解决方案**:
+```bash
+xcode-select --install
+brew install cmake
 pip install dlib
 ```
 
